@@ -11,18 +11,17 @@ class ViewNotes extends Component {
   }
 
   render() {
-    console.log(this.props.match);
     return (
       <Row>
         { this.props.notes.map((note, index) => {
           return (
-              <LinkContainer to={`/view/${index}/`} key={index}>
-                <Col sm={4} md={4} xs={3}>
-                  <h4>{note.title}</h4>
-                  <hr />
-                  {note.content.slice(0, 99) + '...'}
-                </Col>
-              </LinkContainer>
+            <LinkContainer to={`/view/${index}/`} key={index}>
+              <Col sm={4} md={4} xs={3}>
+                <h4>{note.title}</h4>
+                <hr />
+                {note.content.slice(0, 99) + '...'}
+              </Col>
+            </LinkContainer>
           )
         })}
       </Row>

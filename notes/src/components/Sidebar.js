@@ -6,6 +6,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import AddNote from './AddNote';
 import ViewNotes from './ViewNotes';
 import ViewNote from './ViewNote';
+import DeleteNote from './DeleteNote';
+import EditNote from './EditNote';
 
 class Sidebar extends Component {
   constructor(props) {
@@ -50,19 +52,21 @@ class Sidebar extends Component {
           </Nav>
         </Navbar>
         <Grid>
-          {/* <Row> */}
-            {/* <Col> */}
-              <Route path="/view/:id"
-                  component={() => <ViewNote notes={this.props.notes} />} />
-              {this.state.routes.map((route, index) => (
-                <Route key={index}
-                       path={route.path}
-                       exact={route.exact}
-                       component={route.main}
-                />
-              ))}
-            {/* </Col> */}
-          {/* </Row> */}
+          <Route path="/view/:id"
+              component={() => <ViewNote notes={this.props.notes} />} />
+          <Route path="/delete/:id"
+              component={() => <DeleteNote deleteNote={this.props.deleteNote}
+                                           notes={this.props.notes} />} />
+          <Route path="/edit/:id"
+              component={() => <EditNote editNote={this.props.editNote}
+                                         notes={this.props.notes}  />} />
+          {this.state.routes.map((route, index) => (
+            <Route key={index}
+                   path={route.path}
+                   exact={route.exact}
+                   component={route.main}
+            />
+          ))}
         </Grid>
       </div>
     )
